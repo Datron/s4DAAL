@@ -1,0 +1,88 @@
+-------------------------*------------------------INFO---------------------------------------*-------------------------------------------------------------------------------------------
+
+Import- used to know a class you want to use , java.util-represents the path , Scanner-is the class you want to use.
+
+ Scanner scanner = new Scanner(System.in) => CREATES AN OBJECT OF Scanner  CLASS WHICH IS DEFINED IN JAVA.UTIL.SCANNER PACKAGE.
+ Scanner CLASS ALLOWS USER TO TAKE INPUT FROM CONSOLE.
+(System.in) IS PASSED AS A PARAMETER IN SCANNER CLASS. IT TELLS THE JAVA COMPILER THAT SYSTEM INPUT WILL BE PROVIDED THROUGH CONSOLE (KEYBOARD).
+----------------------------------*-------------INFO----------------------------------------------*--------------------------------------------------------------------------------------
+
+import java.util.Scanner;
+public class arrayStack {   // IMPORT THE SCANNER CLASS WHICH IS DEFINED INSIDE UTIL FOLDER INSIDE THE JAVA FOLDER
+    int a[],top,max,i;  //DECLARING AN EMPTY ARRAY 'a' AND DECLARING VARIABLES
+		arrayStack(int n) //using constructor
+		{
+			max=n; // DECLARING SIZE TO 'n'
+			a=new int[max];
+			top=-1; // INTIALIZING THE TOP ELEMENT WITH -1.
+		}
+		void push(int ele) // DECLARING THE FUNCTION TO INSERT OR PUSH  ELEMENT TO STACK
+		{
+			if(top==max-1) // CHECKING THE TOP OVERFLOW CONDITION
+			{
+				System.out.println("----Stack OVER FLOW - Elements in the array are :"+max+" ----");
+			}
+			else
+			{
+				a[++top]=ele; //  INCREMENTING THE TOP AND STORING THE ELEMENT PUSHED WITH TOP 
+				
+			}
+		}
+		void pop() // DECLARING THE FUNCTION TO DELETE OR POP ELEMENT FROM STACK
+		{
+			if(top==-1) //CHECKING THE STACK UNDERFLOW CONDITION
+			{
+				System.out.println("----Stack Underflow----");
+			}
+			else
+			{
+				System.out.println("Poped Element is :"+a[top--]); //DISPLAYING THE POPED ELEMENT AND DECREMENTING THE TOP
+			}
+		}
+		void display() //DECLARING THE FUNCTION TO DISPLAY ELEMENTS IN STACK
+		{
+			if(top==-1) // CHECKING FOR THE STACK UNDERFLOW CONDITION
+			{
+				System.out.println("----STACK UNDERFLOW - No Element to display----");
+				return;
+			}
+			System.out.println("Elements in the stack are as follows :");
+			int p=top;
+			for(i=p;i>=0;i--) // USING ARRAY TO DISPLAY THE ELEMENTS OF STACK
+			{
+				System.out.println("ELEMENT :"+a[i]);
+			}
+		}
+	}
+	      class Stack {   //CREATION OF THE MAIN CLASS
+		public static void main(String[] args) {
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter the Size of the array");
+			int n=scan.nextInt(); // USED TO INPUT AN INTEGER VALUE FROM THE USER AND ASSIGN IT TO THE VARABLE n . scanner is object of  Scanner CLASS.
+			boolean done=false;
+			arrayStack stk =new arrayStack(n);
+			Do // USING DO-WHILE FOR CREATING OPTIONS
+			{
+				System.out.println("Stack Operation ");
+				System.out.println("1.Push\n2.Pop\n3.Display\n4.Exit");
+				System.out.println("Enter Your Choice");
+				int choice=scan.nextInt();
+				switch(choice) // USING SWITCH TO SELECT ONE FROM MANY MULTIPLE OPTIONS
+				{
+				case 1:System.out.println("Enter the Elements to be instered");
+					   stk.push(scan.nextInt());
+					   break;
+				case 2:stk.pop();
+					   break;
+				case 3:stk.display();
+					   break;
+				case 4:done=true;
+					   break;
+				default : System.out.println("You Have Entered the Wrong Choice");
+						 break;
+				}
+			}
+			while(!done);
+			scan.close();
+		}
+	}
